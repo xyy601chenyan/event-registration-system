@@ -16,6 +16,34 @@
 </div>
 
 <div class="form-group">
+  <%= f.label :friendly_id %>
+  <%= f.text_field :friendly_id,:required => true, :class => "form-control" %>
+  <p class="help-block">限小写英数字及横线，将作为网址的一部分</p>
+  <input type="text" value="" id="random_id" class="form-control"/>
+  <a onclick="randomId()">生成随机序列</a>
+  <a onclick="useRandomId()">使用随机序列</a>
+</div>
+
+<div class="form-group">
   <%= f.label :description %>
   <%= f.text_area :description, :class => "form-control" %>
 </div>
+<script>
+//前端生成随机字符串，因为如果交由后端处理会加重后端的负担
+ function randomId(){
+   var chars = 'abcdefhijkmnprstwxyz2345678-';
+   var maxPos = chars.length;
+   var pwd = '';
+   for (i = 0; i < 36; i++) {
+   　　　pwd += chars.charAt(Math.floor(Math.random() * maxPos));
+     　}
+   var randomId = document.getElementById("random_id")
+   randomId.value = pwd
+ }
+
+//使用前端生成的随机字符串
+function useRandomId(){
+   var friendlyId = document.getElementById("event_friendly_id")
+   friendlyId.value = document.getElementById("random_id").value
+}
+</script>
