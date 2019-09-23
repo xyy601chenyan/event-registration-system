@@ -29,3 +29,5 @@ en:
       draft: "draft"
       public: "public"
       private: "private"
+
+  category_list: "Category List"

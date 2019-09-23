@@ -1,0 +1,19 @@
+<h1><%= t("admin.category_list")%></h1>
+<p class="text-right">
+<%= link_to "New Category", new_admin_category_path, :class => "btn btn-primary" %>
+</p>
+
+<table class="table">
+<tr>
+  <th>Category Name</th>
+  <th>Action</th>
+</tr>
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= link_to category.name, admin_category_path(category) %></td>
+    <td>
+      <%= link_to "Edit", edit_admin_category_path(category), :class => "btn btn-default" %>
+      <%= link_to "Delete", admin_category_path(category), :method => "delete", :data => { :confirm => "Are you sure?" }, :class => "btn btn-danger" %>
+  </tr>
+<% end %>
+</table>

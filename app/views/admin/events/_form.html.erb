@@ -23,11 +23,6 @@
   <a onclick="randomId()">生成随机序列</a>
   <a onclick="useRandomId()">使用随机序列</a>
 </div>
-
-<div class="form-group">
-  <%= f.label :description %>
-  <%= f.text_area :description, :class => "form-control" %>
-</div>
 <div class="form-group">
   <%= f.label :status %>
   <!--<%#= f.select :status, Event::STATUS.map{|s| [t(s,scope: "event.status"),s]},{},class: "form-control"%>-->
@@ -40,6 +35,15 @@
     <% end %>
   </div>
 </div>
+
+<div class="form-group">
+  <%= f.label :category_id %>
+  <%= f.select :category_id, Category.all.map{|c| [c.name,c.id]},{},class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :description %>
+  <%= f.text_area :description, :class => "form-control" %>
+</div>
 <script>
 //前端生成随机字符串，因为如果交由后端处理会加重后端的负担
  function randomId(){
@@ -51,11 +55,13 @@
      　}
    var randomId = document.getElementById("random_id")
    randomId.value = pwd
- }
+ };
 
 //使用前端生成的随机字符串
 function useRandomId(){
    var friendlyId = document.getElementById("event_friendly_id")
    friendlyId.value = document.getElementById("random_id").value
-}
+};
+
+$("#event_category_id").select2({theme: "bootstrap"});
 </script>
