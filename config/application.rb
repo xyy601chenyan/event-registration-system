@@ -17,6 +17,12 @@ module RailsRecipes
     #设置默认的时区
     config.time_zone = "Beijing"
 
+    #添加table tr td标签到sanitize白名单中
+    config.action_view.sanitized_allowed_tags = Rails::Html::WhiteListSanitizer.allowed_tags + %w(table tr td)
+
+    #添加style border标签到sanitize白名单中
+    config.action_view.sanitized_allowed_attributes = Rails::Html::WhiteListSanitizer.allowed_attributes + %w(style border)
+
     #设置默认的时间格式以及只显示年月日的时间格式ymd
     Time::DATE_FORMATS.merge!(default: "%Y/%m/%d %I:%M %p", ymd: "%Y/%m/%d")
   end

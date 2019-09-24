@@ -1,7 +1,7 @@
 <h1><%= @event.name %></h1>
 
 <p>
-  <%= link_to "打開前台", event_path(@event), :target => "_blank", :class => "btn btn-primary" %>
+  <%= link_to "打开前台", event_path(@event), :target => "_blank", :class => "btn btn-primary" %>
 </p>
 
-<%= simple_format @event.description %>
+<%= sanitize @event.description %>
