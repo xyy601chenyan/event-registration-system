@@ -9,6 +9,8 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 
+gem 'ckeditor','4.2.4'
+
 gem 'bootstrap-datepicker-rails'
 
 gem 'nested_form_fields'
