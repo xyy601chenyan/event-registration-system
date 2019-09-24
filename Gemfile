@@ -9,6 +9,8 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 
+gem 'nested_form_fields'
+
 gem 'select2-rails'
 
 gem 'rails-i18n'
