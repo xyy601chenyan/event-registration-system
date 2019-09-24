@@ -31,3 +31,5 @@ en:
       private: "private"
 
   category_list: "Category List"
+  bulk_update: "batch update"
+  bulk_delete: "batch delete"
