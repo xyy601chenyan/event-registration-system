@@ -20,7 +20,8 @@
   <div class="form-group">
 
     <%= f.label :bio %>
-    <%= f.text_area :bio,class: "form-control" %>
+    <%= f.text_area :bio,class: "form-control",required: true %>
+  <div class="help-block with-errors"></div>
 
   </div>
 
@@ -32,4 +33,7 @@
 
 <% end %>
 
+<script>
+  $("form").validator();
+</script>
 
