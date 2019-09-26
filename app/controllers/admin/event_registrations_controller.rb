@@ -14,6 +14,15 @@ class Admin::EventRegistrationsController < AdminController
       @registrations = @registrations.by_ticket(params[:ticket_id])
     end
 
+    if Array(params[:statuses]).any?
+      @registrations = @registrations.by_status(params[:statuses])
+    end
+
+    if Array(params[:ticket_ids]).any?
+      @registrations = @registrations.by_ticket(params[:ticket_ids])
+    end
+
+
   end
 
 
