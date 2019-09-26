@@ -20,4 +20,24 @@ namespace :dev do
     end
   end
 
+  task :fake_event_and_registrations => :environment do
+    event = Event.create!(status: "public",name: "北京线上聚会", friendly_id: "beijing-online-meetup")
+    t1 = event.tickets.create!(name: "Guest",price: 0)
+    t2 = event.tickets.create!(name: "Vip1",price: 100)
+    t3 = event.tickets.create!(name: "Vip2",price: 120)
+
+    100.times do |i|
+      event.registrations.create!(status: ["pending","confirmed"].sample,
+                                  ticket: [t1,t2,t3].sample,
+                                  name: Faker::Cat.name,
+                                  email: Faker::Internet.email,
+                                  cellphone: "12345678",
+                                  bio: Faker::Lorem.paragraph,
+                                  created_at: Time.now - rand(10).days - rand(24).hours)
+    end
+    puts "Let's visit http://localhost:3000/admin/events/beijing-online-meetup/registrations"
+
+
+  end
+
 end
