@@ -3,7 +3,9 @@ class Admin::EventRegistrationsController < AdminController
   before_action :find_event
 
   def index
-    @registrations = @event.registrations.includes(:ticket).order("id DESC")
+    #默认每页显示15笔资料
+    @registrations = @event.registrations.includes(:ticket).order("id DESC").page(params[:page])
+
   end
 
 
