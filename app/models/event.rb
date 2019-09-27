@@ -3,6 +3,8 @@ class Event < ApplicationRecord
  STATUS = ["draft", "public","private"].freeze
 
  mount_uploader :logo, EventLogoUploader
+ mount_uploaders :images, EventImageUploader
+ serialize :images, JSON
 
  validates_inclusion_of :status, in: STATUS
  validates_presence_of :name, :friendly_id
