@@ -4,7 +4,11 @@ class Admin::EventRegistrationsController < AdminController
 
   def index
     #默认每页显示15笔资料
-    @registrations = @event.registrations.includes(:ticket).order("id DESC").page(params[:page])
+   #@registrations = @event.registrations.includes(:ticket).order("id DESC").page(params[:page])
+
+    @q = @event.registrations.ransack(params[:q])
+
+    @registrations = @q.result.includes(:ticket).order("id DESC").page(params[:page])
 
     if params[:status].present? && Registration::STATUS.include?(params[:status])
       @registrations = @registrations.by_status(params[:status])
