@@ -2,6 +2,8 @@ class Event < ApplicationRecord
 
  STATUS = ["draft", "public","private"].freeze
 
+ mount_uploader :logo, EventLogoUploader
+
  validates_inclusion_of :status, in: STATUS
  validates_presence_of :name, :friendly_id
  validates_uniqueness_of :friendly_id
