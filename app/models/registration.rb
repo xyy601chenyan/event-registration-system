@@ -14,6 +14,8 @@ class Registration < ApplicationRecord
 
   before_validation :generate_uuid, on: :create
 
+  has_paper_trail
+
   scope :by_status, ->(s){where(status: s)}
   scope :by_ticket, ->(t){where(ticket_id: t)}
 
