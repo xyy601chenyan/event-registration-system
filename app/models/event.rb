@@ -17,6 +17,8 @@ class Event < ApplicationRecord
  accepts_nested_attributes_for :tickets, allow_destroy: true, reject_if: :all_blank
 
  has_many :registrations, dependent: :destroy
+ has_many :attachments,class_name: "EventAttachment",dependent: :destroy
+ accepts_nested_attributes_for :attachments, allow_destroy: true, reject_if: :all_blank
 
  scope :only_public, -> { where(:status => "public")}
  scope :only_available, -> { where(:status => ["public","private"])}
