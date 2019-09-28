@@ -9,11 +9,30 @@
 
 
 <canvas id="myChart1" width="400" height="200"></canvas>
+
+<hr>
+
+<canvas id="myChart2" width="400" height="200"></canvas>
 <script>
 var ctx1 = document.getElementById("myChart1");
 var myChart1 = new Chart(ctx1, {
   type: 'bar',
   data: <%= raw @data1.to_json %>,
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
+var ctx2 = document.getElementById("myChart2");
+var myChart2 = new Chart(ctx2, {
+  type: 'bar',
+  data: <%= raw @data2.to_json %>,
   options: {
     scales: {
       yAxes: [{
