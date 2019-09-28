@@ -20,7 +20,7 @@ class Admin::UsersController < AdminController
   private
 
   def user_params
-    params.require(:user).permit(:email,:group_ids => [])
+    params.require(:user).permit(:email,:role,:group_ids => [])
   end
 
   def find_user
