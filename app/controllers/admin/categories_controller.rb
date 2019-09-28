@@ -1,4 +1,6 @@
 class Admin::CategoriesController < AdminController
+
+  before_action :require_admin!
   before_action :find_category, only: [:show,:edit,:update,:destroy]
   def index
     @categories = Category.all

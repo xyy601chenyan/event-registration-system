@@ -1,4 +1,6 @@
 class Admin::UsersController < AdminController
+
+  before_action :require_admin!
   before_action :find_user, only:[:edit,:update]
   def index
     @users = User.includes(:groups).all

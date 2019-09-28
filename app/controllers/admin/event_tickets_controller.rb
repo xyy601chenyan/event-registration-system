@@ -1,4 +1,6 @@
 class Admin::EventTicketsController < AdminController
+
+  before_action :require_editor!
   before_action :find_event
   before_action :find_event_ticket, only: [:edit,:update,:destroy]
 

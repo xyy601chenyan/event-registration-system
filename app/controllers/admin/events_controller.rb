@@ -1,4 +1,6 @@
 class Admin::EventsController < AdminController
+
+  before_action :require_editor!
   before_action :find_event, only: [:show,:edit,:update,:destroy,:reorder]
 
   def index
