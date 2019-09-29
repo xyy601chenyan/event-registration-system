@@ -27,6 +27,7 @@ Rails.application.routes.draw do
         end
       end
       resources :tickets, controller: "event_tickets"
+      resources :registration_imports #csv文件导入记录
 
       collection do
         post :bulk_update
