@@ -21,7 +21,11 @@ Rails.application.routes.draw do
   namespace :admin do
     root "events#index"
     resources :events do
-      resources :registrations, controller: "event_registrations"
+      resources :registrations, controller: "event_registrations" do
+        collection do
+          post :import #导入csv到数据库
+        end
+      end
       resources :tickets, controller: "event_tickets"
 
       collection do

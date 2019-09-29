@@ -48,7 +48,9 @@ namespace :dev do
     success = 0
     failed_records = []
 
-    CSV.foreach("#{Rails.root}/tmp/registrations.csv") do |row|
+    csv_string = File.read("#{Rails.root}/tmp/registrations.csv")
+    #CSV.foreach("#{Rails.root}/tmp/registrations.csv") do |row|
+    CSV.parse(csv_string) do |row|
       registration = event.registrations.new(status: "confirmed",
                                              ticket: tickets.find{ |t| t.name == row[0]},
                                              name: row[1],
