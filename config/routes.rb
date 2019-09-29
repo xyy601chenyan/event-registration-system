@@ -3,6 +3,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   root "events#index"
+
+  require 'sidekiq/web'
+  authenticate :user,lambda {|u| u.is_admin?} do
+    mount Sidekiq::Web => 'sidekiq'
+  end
+
   resources :events do
     resources :registrations do
       member do

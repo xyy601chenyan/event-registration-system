@@ -11,7 +11,9 @@ class RegistrationImport < ApplicationRecord
   serialize :error_messages, JSON
 
   def process!
-    csv_string = self.csv_file.read.force_encoding("utf-8")
+    #csv_string = self.csv_file.read.force_encoding("utf-8")
+    csv_string = self.csv_file.read.force_encoding("ISO-8859-1")
+    #csv_string = File.open(self.csv_file,"r:ISO-8859-1")
     tickets = self.event.tickets
 
     success = 0
